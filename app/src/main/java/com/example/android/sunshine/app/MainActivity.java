@@ -1,13 +1,19 @@
 package com.example.android.sunshine.app;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -57,6 +63,40 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            String[] forecastArray = {
+                    "Today Sunny 40/21",
+                    "Tomorrow Sunny 40/21",
+                    "Tomorrow Sunny 40/21",
+                    "Tomorrow Sunny 40/21",
+                    "Tomorrow Sunny 40/21",
+                    "Tomorrow Sunny 40/21",
+                    "Tomorrow Sunny 40/21",
+                    "Today Sunny 40/21",
+                    "Today Sunny 40/21",
+                    "Today Sunny 40/21",
+                    "Tomorrow Sunny 40/21",
+                    "Tomorrow Sunny 40/21",
+                    "Tomorrow Sunny 40/21",
+                    "Tomorrow Sunny 40/21",
+            };
+
+            List<String> weekForecast = new ArrayList<>(
+                    Arrays.asList(forecastArray));
+
+            ArrayAdapter<String> mforecastAdapter = new ArrayAdapter<>(
+                    getActivity(),
+                    R.layout.list_item_forecast,
+                    R.id.list_item_textview,
+                    weekForecast
+            );
+
+            ListView listview = (ListView) rootView.findViewById(R.id.listview_forecast);
+            listview.setAdapter(mforecastAdapter);
+
+            // OpenWeatherMap API Key: 9a84a9af05279aa999e824dcd1a5702a
+            // http://api.openweathermap.org/data/2.5/forecast/?q=Melbourne.au&cnt=7&units=metric&APPID=9a84a9af05279aa999e824dcd1a5702a
+
             return rootView;
         }
     }
