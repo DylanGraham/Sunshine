@@ -31,8 +31,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 /**
@@ -68,11 +66,7 @@ public class ForecastFragment extends Fragment {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_refresh) {
-            FetchWeatherTask weatherTask = new FetchWeatherTask();
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            String location= prefs.getString(getString(R.string.pref_location_key),
-                    getString(R.string.pref_location_default));
-            weatherTask.execute(location);
+            updateWeather();
             return true;
         }
 
@@ -80,20 +74,28 @@ public class ForecastFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        updateWeather();
+    }
+
+    private void updateWeather() {
+        FetchWeatherTask weatherTask = new FetchWeatherTask();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String location= prefs.getString(getString(R.string.pref_location_key),
+                getString(R.string.pref_location_default));
+        weatherTask.execute(location);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        String[] forecastArray = {
-                "Today Sunny 40/21",
-                "Tomorrow Sunny 40/21",
-        };
 
-        List<String> weekForecast = new ArrayList<>(Arrays.asList(forecastArray));
-
-        mForecastAdapter = new ArrayAdapter<String>(
+        mForecastAdapter = new ArrayAdapter<>(
                 getActivity(),
                 R.layout.list_item_forecast,
                 R.id.list_item_textview,
-                weekForecast
+                new ArrayList<String>()
         );
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
