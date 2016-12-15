@@ -106,7 +106,11 @@ public class ForecastFragment extends Fragment {
         listview.setAdapter(mForecastAdapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
+<<<<<<< HEAD
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+=======
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+>>>>>>> 673862144560b577b36b953e985fb52fda9a17e9
                 String forecast = mForecastAdapter.getItem(position);
                 Intent intent = new Intent(getActivity(), DetailActivity.class)
                         .putExtra(Intent.EXTRA_TEXT, forecast);
@@ -231,9 +235,12 @@ public class ForecastFragment extends Fragment {
         @Override
         protected String[] doInBackground(String... params) {
 
+<<<<<<< HEAD
             // OpenWeatherMap API Key: 9a84a9af05279aa999e824dcd1a5702a
             // http://api.openweathermap.org/data/2.5/forecast/?q=Melbourne.au&cnt=7&units=metric&APPID=9a84a9af05279aa999e824dcd1a5702a
 
+=======
+>>>>>>> 673862144560b577b36b953e985fb52fda9a17e9
             // These two need to be declared outside the try/catch
             // so that they can be closed in the finally block.
             HttpURLConnection urlConnection = null;
@@ -252,13 +259,20 @@ public class ForecastFragment extends Fragment {
                 final String UNITS_PARAM = "units";
                 final String DAYS_PARAM = "cnt";
                 final String API_PARAM = "APPID";
+<<<<<<< HEAD
                 final String API_KEY = "9a84a9af05279aa999e824dcd1a5702a";
+=======
+>>>>>>> 673862144560b577b36b953e985fb52fda9a17e9
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
                         .appendQueryParameter(QUERY_PARAM, params[0])
                         .appendQueryParameter(UNITS_PARAM, units)
                         .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
+<<<<<<< HEAD
                         .appendQueryParameter(API_PARAM, API_KEY)
+=======
+                        .appendQueryParameter(API_PARAM, BuildConfig.OPEN_WEATHER_MAP_API_KEY)
+>>>>>>> 673862144560b577b36b953e985fb52fda9a17e9
                         .build();
 
                 URL url = new URL(builtUri.toString());
@@ -296,7 +310,11 @@ public class ForecastFragment extends Fragment {
                 //Log.v(LOG_TAG, "Forecast JSON String: " + forecastJsonStr);
 
             } catch (IOException e) {
+<<<<<<< HEAD
                 Log.e("ForecastFragment", "Error ", e);
+=======
+                Log.e(LOG_TAG, "Error ", e);
+>>>>>>> 673862144560b577b36b953e985fb52fda9a17e9
                 // If the code didn't successfully get the weather data, there's no point in attemping
                 // to parse it.
                 return null;
@@ -308,7 +326,11 @@ public class ForecastFragment extends Fragment {
                     try {
                         reader.close();
                     } catch (final IOException e) {
+<<<<<<< HEAD
                         Log.e("ForecastFragment", "Error closing stream", e);
+=======
+                        Log.e(LOG_TAG, "Error closing stream", e);
+>>>>>>> 673862144560b577b36b953e985fb52fda9a17e9
                     }
                 }
             }
@@ -335,4 +357,8 @@ public class ForecastFragment extends Fragment {
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 673862144560b577b36b953e985fb52fda9a17e9

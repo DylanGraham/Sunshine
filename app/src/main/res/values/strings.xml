@@ -4,6 +4,10 @@
     <string name="app_name">Sunshine</string>
     <string name="action_settings">Settings</string>
     <string name="action_refresh">Refresh</string>
+<<<<<<< HEAD
+=======
+    <string name="action_map">Map Location</string>
+>>>>>>> 673862144560b577b36b953e985fb52fda9a17e9
     <string name="title_activity_detail">Details</string>
     <string name="title_activity_settings">Settings</string>
 
@@ -12,6 +16,11 @@
     <string name="pref_location_key">location</string>
     <string name="pref_location_default">94043</string>
 
+<<<<<<< HEAD
+=======
+    <string name="action_share">Share</string>
+
+>>>>>>> 673862144560b577b36b953e985fb52fda9a17e9
     <string-array name="pref_unit_list">
         <item>Metric</item>
         <item>Imperial</item>
